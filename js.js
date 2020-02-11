@@ -1,5 +1,20 @@
-<script type="text/javascript">
-    $("form[name='uploader']").submit(function(e) {
+const input = document.querySelector('input[type="file"]')
+input.addEventListener('change'), 
+function handleFiles (files) {
+  console.log(files)
+  const reader = new FileReader()
+  reader.onload = function () {
+     const lines = reader.result.split('\n').map(function (line) {
+       return line.split(',')
+     })
+     console.log(lines)
+   
+    document.body.appendChild(reader)
+  }
+  reader.readAsText(files[0])
+}, false
+
+ /*$("form[name='uploader']").submit(function(e) {
         var formData = new FormData($(this)[0]);
 
         $.ajax({
@@ -19,3 +34,4 @@
         });
         e.preventDefault();
     });
+    */
