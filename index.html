@@ -1,11 +1,62 @@
 <!DOCTYPE html>
+<html>
+ 
+<head>
+    <title>FileReader Example</title>
+    <meta charset="UTF-8">
+ 
+    <script src="filereader-drop-example.js"></script>
+ 
+    <style>
+        #drop-area {
+            border: 1px solid blue;
+            padding: 15px;
+            margin-top:5px;
+        }
+    </style>
+ 
+</head>
+ 
+<body>
+ 
+    <h3>FileReader example</h3>
+    <a href="">Reset</a>
+    <input type = "file" name = "testInput" id = "testInput" oninput = "function resetLog()">
+    <p id = "info" ></p>
+    <div id="drop-area" ondragover="dragoverHandler(event)" ondrop="dropHandler(event)">
+        Drop one file here
+    </div>
+ 
+    <output id="log-div"></output>
+ 
+</body>
+ 
+</html>
+
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>JS FileReader</title>
+  <style>
+    #drop-area {
+        border: 1px solid blue;
+        padding: 15px;
+        margin-top:5px;
+    }
+</style>
 </head>
 <body>
     <input type="file" />
   <script src="js.js" charset="utf-8"></script>
+  <h3>FileReader example</h3>
+    <a href="">Reset</a>
+ 
+    <div id="drop-area" ondragover="handleFiles (files)" ondrop="handleFiles (files)">
+        Drop one file here
+    </div>
+    <output id="files"></output>
+ 
+    
 </body>
-</html>
+</html>>
