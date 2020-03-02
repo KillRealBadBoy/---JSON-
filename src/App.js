@@ -1,30 +1,29 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Loader from './Loader/Loader'
-import Table from './Table/Table'
+import { JSONViewer } from './Table/Table'
 
 class App extends Component {
   state = {
     isLoading: true,
-    data:[]
+    data: []
   }
-  async componentDidMount(){
+  async componentDidMount() {
     const response = await fetch(`http://www.json-generator.com/api/json/get/ceRHciXcVu?indent=2`)
     const data = await response.json()
     this.setState({
-      isLoading:false,
+      isLoading: false,
       data
     })
   }
-  render(){
-    return(
+  render() {
+    const { isLoading, data } = this.state
+    return (
       <div className="Container">
-{
-this.state.isLoading
-?<Loader/>
-:<Table
-data={this.state.data}
-/>
-}
+        {
+          isLoading
+            ? <Loader />
+            : <JSONViewer name="Список" value={data} level={0} />
+        }
       </div>
     )
   }
