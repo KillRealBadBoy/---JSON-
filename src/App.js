@@ -1,32 +1,20 @@
-  
-import React, { Component } from 'react';
-import Loader from './Loader/Loader'
-import { JSONViewer } from './Table/Table'
+import React, { useState } from 'react';
+import './App.css';
 
-class App extends Component {
-  state = {
-    isLoading: true,
-    data: []
-  }
-  async componentDidMount() {
-    const response = await fetch(`http://www.json-generator.com/api/json/get/ceRHciXcVu?indent=2`)
-    const data = await response.json()
-    this.setState({
-      isLoading: false,
-      data
-    })
-  }
-  render() {
-    const { isLoading, data } = this.state
+import FileUploader from './components/FileUploader';
+import Header from './components/Header';
+import JSONViewer from './components/JSONViewer';
+
+function App() {
+    const [JSONObject, setJSONObject] = useState(null);
+
     return (
-      <div className="Container">
-        {
-          isLoading
-            ? <Loader />
-            : <JSONViewer name="Список" value={data} level={0} />
-        }
-      </div>
-    )
-  }
+        <div>
+            <Header />
+            <FileUploader setJSONObject={setJSONObject} />
+            {JSONObject && <JSONViewer JSONObject={JSONObject} />}
+        </div>
+    );
 }
+
 export default App;
